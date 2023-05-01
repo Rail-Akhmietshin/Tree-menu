@@ -1,0 +1,16 @@
+{% load draw_menu %}
+
+<ul>
+    {% for main_submenu in main_submenus %}
+
+        <a href="?menu={{ menu }}&{{ main_submenu.name }}={{ main_submenu.id }}">
+            <li style="margin-bottom: 30px">
+                {{ main_submenu.name }}
+            </li>
+        </a>
+        {% if main_submenu.sub_submenu %}
+            {% include 'menu/draw_menu.html' with main_submenus=main_submenu.sub_submenu %}
+        {% endif %}
+    {% endfor %}
+</ul>
+
